@@ -253,7 +253,7 @@ function Index() {
                       className={`absolute top-6 right-6 flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all ${
                         on
                           ? "bg-accent text-accent-foreground"
-                          : "bg-card/90 backdrop-blur-sm hover:bg-accent hover:text-accent-foreground"
+                          : "bg-card/90 opacity-70 backdrop-blur-sm hover:bg-accent hover:text-accent-foreground hover:opacity-100"
                       }`}
                     >
                       <Check className="h-6 w-6" strokeWidth={2.5} />
