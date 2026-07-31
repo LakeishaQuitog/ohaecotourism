@@ -420,9 +420,6 @@ function Index() {
           <p className="max-w-md text-sm leading-relaxed opacity-70">
             A free directory of verified, community-led sustainability initiatives across Hawai&lsquo;i.
           </p>
-          <p className="text-xs tracking-widest uppercase opacity-50">
-            &copy; {new Date().getFullYear()} &lsquo;Oha Ecotourism
-          </p>
         </div>
       </footer>
     </main>
