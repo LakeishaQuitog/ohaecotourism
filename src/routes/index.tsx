@@ -33,7 +33,10 @@ export const Route = createFileRoute("/")({
 });
 
 const STORAGE_KEY = "oha_impact_plan";
-const FORM_URL = "https://forms.gle/y2eaPc9ptY1UDL37A";
+const TRAVELER_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScd5GE-_yIgZQT4zfNhSaQZvAa6S6xz-lpJ8nGdpitXHSRplg/viewform?embedded=true";
+const INITIATIVE_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSf1JK6kL73RGFLlQ5cwqSdGfedQ7AhEra7YGLJepBMWRik3yQ/viewform?embedded=true";
 
 const items = [
   {
@@ -143,9 +146,7 @@ function Index() {
             Directory
           </a>
           <a
-            href={FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#get-involved"
             className="rounded-full bg-primary px-5 py-2.5 text-primary-foreground transition-colors hover:bg-primary-deep"
           >
             Get Involved
@@ -327,9 +328,7 @@ function Index() {
             commission from local vendors. No hidden fees, no paywalls.
           </p>
           <a
-            href={FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#get-involved"
             className="block w-full rounded-full bg-primary py-5 text-lg font-bold text-primary-foreground shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl"
           >
             Get Involved
