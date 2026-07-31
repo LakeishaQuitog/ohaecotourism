@@ -69,7 +69,7 @@ const steps = [
   {
     n: "1",
     title: "We Vet",
-    body: "We personally interviewed over 25 island small business owners and native-led nonprofits. Every listing is verified local and island-operated.",
+    body: "We personally interviewed work to make sure every listing is verified local and island-operated.",
   },
   {
     n: "2",
