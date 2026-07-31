@@ -79,7 +79,7 @@ const steps = [
   {
     n: "2",
     title: "You Discover",
-    body: "Browse authentic farms, cultural projects and M\u0101lama Hawai\u02BBi workdays across O\u02BBahu, Maui, Kaua\u02BBi and Hawai\u02BBi Island.",
+    body: "Browse authentic farms, cultural projects and workdays across O\u02BBahu, Maui, Kaua\u02BBi and Hawai\u02BBi Island.",
   },
   {
     n: "3",
