@@ -33,7 +33,10 @@ export const Route = createFileRoute("/")({
 });
 
 const STORAGE_KEY = "oha_impact_plan";
-const FORM_URL = "https://forms.gle/y2eaPc9ptY1UDL37A";
+const TRAVELER_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScd5GE-_yIgZQT4zfNhSaQZvAa6S6xz-lpJ8nGdpitXHSRplg/viewform?embedded=true";
+const INITIATIVE_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSf1JK6kL73RGFLlQ5cwqSdGfedQ7AhEra7YGLJepBMWRik3yQ/viewform?embedded=true";
 
 const items = [
   {
@@ -102,6 +105,7 @@ const faqs = [
 function Index() {
   const [saved, setSaved] = useState<string[]>([]);
   const [hydrated, setHydrated] = useState(false);
+  const [formTab, setFormTab] = useState<"traveler" | "initiative">("traveler");
 
   useEffect(() => {
     try {
@@ -143,9 +147,7 @@ function Index() {
             Directory
           </a>
           <a
-            href={FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#get-involved"
             className="rounded-full bg-primary px-5 py-2.5 text-primary-foreground transition-colors hover:bg-primary-deep"
           >
             Get Involved
@@ -327,9 +329,7 @@ function Index() {
             commission from local vendors. No hidden fees, no paywalls.
           </p>
           <a
-            href={FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#get-involved"
             className="block w-full rounded-full bg-primary py-5 text-lg font-bold text-primary-foreground shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl"
           >
             Get Involved
@@ -403,23 +403,51 @@ function Index() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-32">
+      <section id="get-involved" className="scroll-mt-24 px-6 py-32">
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[5rem] bg-primary px-8 py-24 text-center text-primary-foreground shadow-2xl md:px-12">
           <div className="relative z-10">
             <h2 className="font-display mb-10 text-6xl leading-none italic md:text-9xl">
               E M&#257;lama I Ka &#699;&#256;ina
             </h2>
-            <p className="mx-auto mb-14 max-w-xl text-2xl italic opacity-80">
+            <p className="mx-auto mb-12 max-w-xl text-2xl italic opacity-80">
               To care for the land that feeds us. Make your trip count for the places that need it. Get early access now.
             </p>
-            <a
-              href={FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block rounded-full bg-accent px-16 py-6 text-xl font-bold text-accent-foreground shadow-xl transition-all hover:bg-background hover:text-accent"
-            >
-              Join the Movement
-            </a>
+            <div className="mx-auto mb-8 flex w-full max-w-md gap-2 rounded-full bg-background/15 p-1.5">
+              {(
+                [
+                  { key: "traveler", label: "I\u2019m a Traveler" },
+                  { key: "initiative", label: "I\u2019m an Initiative" },
+                ] as const
+              ).map((tab) => (
+                <button
+                  key={tab.key}
+                  type="button"
+                  onClick={() => setFormTab(tab.key)}
+                  className={`flex-1 rounded-full px-5 py-3 text-sm font-bold tracking-wide transition-all ${
+                    formTab === tab.key
+                      ? "bg-accent text-accent-foreground shadow-lg"
+                      : "opacity-70 hover:opacity-100"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+            <div className="mx-auto max-w-3xl overflow-hidden rounded-[2.5rem] bg-background p-2 shadow-2xl">
+              <iframe
+                key={formTab}
+                src={formTab === "traveler" ? TRAVELER_FORM_URL : INITIATIVE_FORM_URL}
+                title={
+                  formTab === "traveler"
+                    ? "Traveler early access form"
+                    : "Local initiative partnership form"
+                }
+                className="h-[900px] w-full rounded-[2rem] border-0"
+                loading="lazy"
+              >
+                Loading form&hellip;
+              </iframe>
+            </div>
           </div>
         </div>
       </section>
