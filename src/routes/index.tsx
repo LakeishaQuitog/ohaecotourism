@@ -33,10 +33,12 @@ export const Route = createFileRoute("/")({
 });
 
 const STORAGE_KEY = "oha_impact_plan";
-const TRAVELER_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLScd5GE-_yIgZQT4zfNhSaQZvAa6S6xz-lpJ8nGdpitXHSRplg/viewform?embedded=true";
-const INITIATIVE_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSf1JK6kL73RGFLlQ5cwqSdGfedQ7AhEra7YGLJepBMWRik3yQ/viewform?embedded=true";
+const FORM_URLS = {
+  traveler:
+    "https://docs.google.com/forms/d/e/1FAIpQLScd5GE-_yIgZQT4zfNhSaQZvAa6S6xz-lpJ8nGdpitXHSRplg/viewform?embedded=true",
+  initiative:
+    "https://docs.google.com/forms/d/e/1FAIpQLSf1JK6kL73RGFLlQ5cwqSdGfedQ7AhEra7YGLJepBMWRik3yQ/viewform?embedded=true",
+} as const;
 
 const items = [
   {
@@ -436,7 +438,7 @@ function Index() {
             <div className="mx-auto max-w-3xl overflow-hidden rounded-[2.5rem] bg-background p-2 shadow-2xl">
               <iframe
                 key={formTab}
-                src={formTab === "traveler" ? TRAVELER_FORM_URL : INITIATIVE_FORM_URL}
+                src={FORM_URLS[formTab]}
                 title={
                   formTab === "traveler"
                     ? "Traveler early access form"
