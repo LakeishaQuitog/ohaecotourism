@@ -4,10 +4,15 @@ import { useEffect, useState } from "react";
 
 import heroValley from "@/assets/hero-valley.jpg";
 import ohaLogo from "@/assets/oha-logo.png.asset.json";
-import kokuaFarm from "@/assets/kokua-learning-farm.jpg";
-import kakooOiwi from "@/assets/kakoo-oiwi-taro.jpg";
-import waiheeDunes from "@/assets/waihee-dunes.jpg";
-import kahiliBeach from "@/assets/kahili-beach.jpg";
+import kokuaFarmAsset from "@/assets/kokua-learning-farm.jpeg.asset.json";
+import kakooOiwiAsset from "@/assets/kakoo-oiwi-taro.jpeg.asset.json";
+import waiheeDunesAsset from "@/assets/waihee-dunes.jpg.asset.json";
+import kahiliBeachAsset from "@/assets/kahili-beach.jpeg.asset.json";
+
+const kokuaFarm = kokuaFarmAsset.url;
+const kakooOiwi = kakooOiwiAsset.url;
+const waiheeDunes = waiheeDunesAsset.url;
+const kahiliBeach = kahiliBeachAsset.url;
 
 const TITLE = "\u2018Oha Ecotourism \u2014 Travel Hawai\u02BBi with Intention";
 const DESCRIPTION =
