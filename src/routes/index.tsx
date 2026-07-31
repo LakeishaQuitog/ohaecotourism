@@ -1,14 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import heroValley from "@/assets/hero-valley.jpg";
 import kokuaFarm from "@/assets/kokua-learning-farm.jpg";
 import kakooOiwi from "@/assets/kakoo-oiwi-taro.jpg";
 import waiheeDunes from "@/assets/waihee-dunes.jpg";
 import kahiliBeach from "@/assets/kahili-beach.jpg";
 
-const TITLE = "\u2018Oha | Mindful Travel in Hawai\u02BBi";
+const TITLE = "\u2018Oha \u2014 Travel Hawai\u02BBi with Intention";
 const DESCRIPTION =
-  "Verified local sustainability initiatives in Hawai\u02BBi. Browse vetted spots and save a free personalized impact plan in your browser.";
+  "A free directory of verified, community-led sustainability initiatives across Hawai\u02BBi. Save your own impact plan \u2014 no login, no fees.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,261 +27,314 @@ export const Route = createFileRoute("/")({
 });
 
 const STORAGE_KEY = "oha_impact_plan";
+const FORM_URL = "https://forms.gle/y2eaPc9ptY1UDL37A";
 
-const sampleItems = [
+const items = [
   {
     id: "item-1",
     name: "K\u014Dkua Learning Farm",
-    location: "Hale\u02BBiwa, O\u02BBahu",
-    badge: "Verified Local",
-    imgUrl: kokuaFarm,
-    altText: "Volunteers planting crops at K\u014Dkua Learning Farm in Hale\u02BBiwa, O\u02BBahu",
+    meta: "Hale\u02BBiwa, O\u02BBahu \u2022 Verified Local",
+    img: kokuaFarm,
+    alt: "Volunteers planting crops at K\u014Dkua Learning Farm in Hale\u02BBiwa, O\u02BBahu",
+    shape: "blob-tr",
   },
   {
     id: "item-2",
-    name: "K\u0101ko\u02BBo \u02BB\u014Ciwi: Traditional Taro Farm Restoration",
-    location: "He\u02BBeia, O\u02BBahu",
-    badge: "Native-Led",
-    imgUrl: kakooOiwi,
-    altText:
-      "Community volunteers in taro lo\u02BBi patch at K\u0101ko\u02BBo \u02BB\u014Ciwi in He\u02BBeia, O\u02BBahu",
+    name: "K\u0101ko\u02BBo \u02BB\u014Ciwi",
+    meta: "He\u02BBeia, O\u02BBahu \u2022 Native-Led Taro Restoration",
+    img: kakooOiwi,
+    alt: "Community volunteers in a taro lo\u02BBi patch at K\u0101ko\u02BBo \u02BB\u014Ciwi in He\u02BBeia, O\u02BBahu",
+    shape: "blob-bl",
   },
   {
     id: "item-3",
-    name: "Waihe\u02BBe Coastal Dunes & Wetland Refuge",
-    location: "Waihe\u02BBe, Maui",
-    badge: "Wildlife Protection",
-    imgUrl: waiheeDunes,
-    altText: "Volunteers working at Waihe\u02BBe Coastal Dunes & Wetland Refuge in Maui",
+    name: "Waihe\u02BBe Coastal Dunes",
+    meta: "Waihe\u02BBe, Maui \u2022 Wildlife Protection",
+    img: waiheeDunes,
+    alt: "Volunteers working at Waihe\u02BBe Coastal Dunes & Wetland Refuge in Maui",
+    shape: "blob-tl",
   },
   {
     id: "item-4",
     name: "K\u0101hili Beach Preserve",
-    location: "K\u012Blauea, Kaua\u02BBi",
-    badge: "Coastal Preservation",
-    imgUrl: kahiliBeach,
-    altText: "Volunteers working at K\u0101hili Beach Preserve in K\u012Blauea, Kaua\u02BBi",
+    meta: "K\u012Blauea, Kaua\u02BBi \u2022 Coastal Preservation",
+    img: kahiliBeach,
+    alt: "Volunteers working at K\u0101hili Beach Preserve in K\u012Blauea, Kaua\u02BBi",
+    shape: "blob-br",
+  },
+];
+
+const steps = [
+  {
+    n: "1",
+    title: "We Vet",
+    body: "We personally interviewed over 25 island small business owners and native-led nonprofits. Every listing is verified local and island-operated.",
+  },
+  {
+    n: "2",
+    title: "You Discover",
+    body: "Browse authentic farms, cultural projects and M\u0101lama Hawai\u02BBi workdays across O\u02BBahu, Maui, Kaua\u02BBi and Hawai\u02BBi Island.",
+  },
+  {
+    n: "3",
+    title: "They Thrive",
+    body: "Tick the initiatives you want to support. Your Impact Plan saves straight to your browser \u2014 no login, no app download.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Is this directory really 100% free? What\u2019s the catch?",
+    a: "Yes, it costs $0. We do not charge travelers to access the directory, nor do we take commissions from small local vendors to be listed. Our sole mission is keeping tourist dollars in local hands.",
+  },
+  {
+    q: "Will these recommendations work for my specific vacation area?",
+    a: "Yes. The directory includes verified choices across all major islands (O\u02BBahu, Maui, Kaua\u02BBi and Hawai\u02BBi Island), organized by category so you can easily fit them into your travel schedule.",
   },
 ];
 
 function Index() {
-  const [savedPlan, setSavedPlan] = useState<string[]>([]);
+  const [saved, setSaved] = useState<string[]>([]);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     try {
       const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]");
-      if (Array.isArray(stored)) setSavedPlan(stored);
+      if (Array.isArray(stored)) setSaved(stored);
     } catch (err) {
       console.error("Error loading saved plan:", err);
     }
     setHydrated(true);
   }, []);
 
-  const toggle = (id: string, checked: boolean) => {
-    setSavedPlan((prev) => {
-      const next = checked ? (prev.includes(id) ? prev : [...prev, id]) : prev.filter((x) => x !== id);
+  const toggle = (id: string) => {
+    setSaved((prev) => {
+      const next = prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id];
       localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
       return next;
     });
   };
 
   return (
-    <div className="oha-page">
-      {/* SECTION 1: HEADLINE */}
-      <section className="hero">
-        <div className="container">
-          <div className="brand-title">&lsquo;Oha</div>
-          <h1>
-            Verifying authentic local sustainability initiatives and giving them direct visibility to
-            mindful travelers.
-          </h1>
-          <p className="subhead">
-            Select local spots from our vetted list and save a personalized itinerary directly in your
-            browser.
-          </p>
-        </div>
-      </section>
-
-      {/* SECTION 2: THE PROBLEM */}
-      <section className="problem-section">
-        <div className="container">
-          <h2>The Problem</h2>
-          <p className="subhead" style={{ marginBottom: "1rem" }}>
-            Hard to find for travelers. Hard to grow for locals.
-          </p>
-
-          <div className="problem-grid">
-            <div className="quote-box">
-              <p>
-                <strong>For Mindful Travelers:</strong> Eco-conscious visitors to Hawai&#699;i struggle to
-                find authentic, vetted sustainable businesses, voluntourism workdays (M&#257;lama
-                Hawai&#699;i projects), and zero-waste initiatives due to fragmented information, lack of
-                centralized discovery, and widespread corporate greenwashing.
-              </p>
-            </div>
-
-            <div className="quote-box green">
-              <p>
-                <strong>For Local Initiatives:</strong> Meanwhile, sustainability initiatives across
-                Hawai&#699;i struggle with digital visibility, marketing reach, and finding enough
-                dedicated people to help drive their mission forward.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 3: WHAT THEY GET & COST */}
-      <section className="solution-section">
-        <div className="container">
-          <h2>How &lsquo;Oha Works</h2>
-
-          <div className="steps-grid">
-            <div className="step-card">
-              <div className="step-number">1</div>
-              <h3>Browse Vetted Spots</h3>
-              <p>Read our curated list of authentic, island-owned businesses, farms, and cultural projects.</p>
-            </div>
-            <div className="step-card">
-              <div className="step-number">2</div>
-              <h3>Build Your Plan</h3>
-              <p>Check the box on initiatives or businesses you want to support during your stay.</p>
-            </div>
-            <div className="step-card">
-              <div className="step-number">3</div>
-              <h3>Save to Browser</h3>
-              <p>
-                Your &quot;Impact Plan&quot; stays saved right here in your browser&mdash;no login or app
-                download needed.
-              </p>
-            </div>
-          </div>
-
-          {/* INTERACTIVE DIRECTORY DEMO */}
-          <div className="app-preview">
-            <h3>Try It Now: Build Your Impact Plan</h3>
-            <p>
-              <small>Click the top-right checkbox on any card to save it to your browser plan.</small>
+    <main className="w-full overflow-x-hidden">
+      {/* HERO */}
+      <section className="relative mx-auto max-w-7xl px-6 py-20 lg:py-32">
+        <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
+          <div className="z-10 lg:col-span-7">
+            <span className="mb-8 inline-block rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold tracking-widest uppercase">
+              The Directory of Verified Impact
+            </span>
+            <h1 className="font-display mb-10 text-7xl leading-[0.8] tracking-tighter italic lg:text-[10rem]">
+              Travel with <br />
+              <span className="text-accent">Intention.</span>
+            </h1>
+            <p className="mb-12 max-w-md text-xl leading-relaxed opacity-90">
+              &lsquo;Oha connects conscious travelers with verified sustainability initiatives across the
+              Hawaiian Islands. Explore deeper, give back, and leave a lighter footprint.
             </p>
+            <div className="flex flex-wrap gap-6">
+              <a
+                href="#directory"
+                className="rounded-full bg-primary px-10 py-5 font-medium text-primary-foreground transition-all hover:-translate-y-1 hover:bg-primary-deep"
+              >
+                Start Exploring
+              </a>
+              <a
+                href="#standard"
+                className="rounded-full border-2 border-primary px-10 py-5 font-medium transition-colors hover:bg-secondary"
+              >
+                Our Mission
+              </a>
+            </div>
+          </div>
+          <div className="relative lg:col-span-5">
+            <div className="aspect-[4/5] rotate-2 overflow-hidden rounded-[4rem] rounded-tl-none bg-secondary shadow-2xl">
+              <img
+                src={heroValley}
+                alt="Misty green Hawaiian valley with tropical foliage at sunrise"
+                width={800}
+                height={1008}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-8 -left-6 flex aspect-square w-40 -rotate-12 flex-col items-center justify-center rounded-full bg-accent p-6 text-center text-accent-foreground shadow-xl lg:-left-12 lg:w-48">
+              <span className="font-display text-4xl">100%</span>
+              <span className="text-[10px] leading-tight font-bold tracking-widest uppercase">
+                Verified Projects
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="cards-grid">
-              {sampleItems.map((item) => (
-                <div className="tour-card" key={item.id}>
-                  <div className="card-image-wrapper">
+      {/* PROBLEM */}
+      <section className="bg-secondary px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <div className="grid gap-12 md:grid-cols-2 md:pb-12">
+            <div className="flex flex-col justify-center rounded-[3rem] rounded-br-none bg-background p-12 shadow-sm">
+              <h2 className="font-display mb-6 text-4xl leading-tight italic">
+                &ldquo;I wanted to help, but fragmented information and corporate greenwashing made it
+                impossible to know who was actually doing the work.&rdquo;
+              </h2>
+              <p className="text-xs font-bold tracking-widest text-accent uppercase">
+                &mdash; Mindful travelers
+              </p>
+            </div>
+            <div className="flex flex-col justify-center rounded-[3rem] rounded-tl-none bg-primary p-12 text-primary-foreground shadow-xl md:translate-y-12">
+              <h2 className="font-display mb-6 text-4xl leading-tight italic">
+                &ldquo;We&rsquo;re doing real work on the land, but we struggle with digital visibility and
+                finding people to help drive the mission.&rdquo;
+              </h2>
+              <p className="text-xs font-bold tracking-widest uppercase opacity-60">
+                &mdash; Local initiatives
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section id="standard" className="mx-auto max-w-6xl scroll-mt-12 px-6 py-32">
+        <div className="mb-24 text-center">
+          <h2 className="font-display text-6xl italic">The &lsquo;Oha Standard</h2>
+        </div>
+        <div className="grid gap-16 md:grid-cols-3">
+          {steps.map((s) => (
+            <div key={s.n} className="group text-center">
+              <div className="font-display mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full bg-secondary text-4xl italic transition-transform group-hover:scale-110">
+                {s.n}
+              </div>
+              <h3 className="mb-4 text-2xl font-semibold">{s.title}</h3>
+              <p className="leading-relaxed opacity-80">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* DIRECTORY */}
+      <section id="directory" className="scroll-mt-12 px-6 py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
+            <div className="max-w-xl">
+              <h2 className="font-display mb-4 text-6xl italic">Explore the Directory</h2>
+              <p className="text-lg opacity-70">
+                Tick the places you want to support. Your plan saves right here in your browser.
+              </p>
+            </div>
+            <div className="flex items-center gap-3 rounded-full border border-border bg-card px-6 py-3 shadow-sm">
+              <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-accent" />
+              <span className="text-sm font-medium tracking-widest uppercase">
+                {hydrated ? saved.length : 0} Initiatives Saved
+              </span>
+            </div>
+          </div>
+
+          <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
+            {items.map((item, i) => {
+              const on = saved.includes(item.id);
+              return (
+                <article key={item.id} className={i % 2 === 1 ? "group lg:translate-y-12" : "group"}>
+                  <div
+                    className={`relative mb-6 aspect-[3/4] overflow-hidden ${item.shape} bg-secondary shadow-md transition-shadow hover:shadow-xl`}
+                  >
                     <img
-                      className="card-img"
-                      src={item.imgUrl}
-                      alt={item.altText}
+                      src={item.img}
+                      alt={item.alt}
                       loading="lazy"
                       width={850}
                       height={650}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <span className="card-badge">{item.badge}</span>
-                    <label className="card-checkbox-btn" htmlFor={item.id} title="Save to Impact Plan">
-                      <input
-                        type="checkbox"
-                        id={item.id}
-                        checked={savedPlan.includes(item.id)}
-                        onChange={(e) => toggle(item.id, e.target.checked)}
-                      />
-                    </label>
+                    <button
+                      type="button"
+                      aria-pressed={on}
+                      aria-label={`${on ? "Remove" : "Add"} ${item.name} ${on ? "from" : "to"} your impact plan`}
+                      onClick={() => toggle(item.id)}
+                      className={`absolute top-6 right-6 flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all ${
+                        on
+                          ? "bg-accent text-accent-foreground"
+                          : "bg-card/90 backdrop-blur-sm hover:bg-accent hover:text-accent-foreground"
+                      }`}
+                    >
+                      <Check className="h-6 w-6" strokeWidth={2.5} />
+                    </button>
                   </div>
-                  <div className="tour-card-body">
-                    <div className="tour-card-title">{item.name}</div>
-                    <div className="tour-card-location">
-                      <span>&#128205; {item.location}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="saved-summary">
-              <strong>Your Saved Plan Items: </strong>
-              <span className="saved-count">{hydrated ? savedPlan.length : 0}</span>
-            </div>
-          </div>
-
-          <div className="price-box">
-            <h3>Simple Pricing</h3>
-            <div className="price-number">$0 / Free</div>
-            <p>Access the core impact directory completely free of charge. No hidden fees or paywalls.</p>
+                  <h3 className="font-display mb-1 text-2xl">{item.name}</h3>
+                  <p className="text-xs font-bold tracking-widest text-accent uppercase">{item.meta}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* SECTION 4: PROOF */}
-      <section className="proof-section">
-        <div className="container">
-          <h2>Proof</h2>
-          <div className="stat-badge">Real Field Research</div>
-          <div className="graphic-container">
-            <svg
-              width="100"
-              height="100"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#2D5A27"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              <path d="m9 12 2 2 4-4" />
-            </svg>
-          </div>
-          <p>
-            We personally interviewed over 25 Hawaii small business owners and native-led nonprofits to
-            build this directory. Every single business on our list is verified local, island-operated, and
-            directly supports community projects.
+      {/* PRICING */}
+      <section className="px-6 py-32">
+        <div className="relative mx-auto max-w-2xl overflow-hidden rounded-[4rem] border-4 border-primary bg-card p-12 text-center shadow-2xl md:p-16">
+          <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-accent" />
+          <h2 className="font-display mb-6 text-5xl italic">Always Free.</h2>
+          <p className="mb-10 text-lg leading-relaxed opacity-80">
+            Impact tools shouldn&rsquo;t have a price tag. We don&rsquo;t charge travelers and we take no
+            commission from local vendors. No hidden fees, no paywalls.
+          </p>
+          <a
+            href={FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full rounded-full bg-primary py-5 text-lg font-bold text-primary-foreground shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl"
+          >
+            Get Involved
+          </a>
+          <p className="mt-6 text-sm font-medium tracking-widest uppercase opacity-50">
+            No account required
           </p>
         </div>
       </section>
 
-      {/* SECTION 5: OBJECTIONS ANSWERED */}
-      <section className="faq-section">
-        <div className="container">
-          <h2>Common Questions</h2>
-
-          <div className="faq-item">
-            <h3>1. Is this directory really 100% free? What&apos;s the catch?</h3>
-            <p>
-              Yes, it costs $0. We do not charge travelers to access the directory, nor do we take
-              commissions from small local vendors to be listed. Our sole mission is keeping tourist dollars
-              in local hands.
-            </p>
-          </div>
-
-          <div className="faq-item">
-            <h3>2. Will these recommendations actually work for my specific vacation area?</h3>
-            <p>
-              Yes. The directory includes verified choices across all major islands (O&#699;ahu, Maui,
-              Kaua&#699;i, and Hawai&#699;i Island), organized by category so you can easily fit them into
-              your travel schedule.
-            </p>
-          </div>
+      {/* FAQ */}
+      <section className="mx-auto max-w-4xl px-6 py-24">
+        <div className="mb-16 text-center">
+          <h2 className="font-display text-5xl italic">Questions &amp; Clarity</h2>
+        </div>
+        <div className="space-y-4">
+          {faqs.map((f) => (
+            <details
+              key={f.q}
+              className="group cursor-pointer rounded-3xl border border-border bg-card p-8 transition-all hover:border-primary"
+            >
+              <summary className="flex list-none items-center justify-between text-xl font-semibold">
+                <span>{f.q}</span>
+                <span className="text-2xl text-accent transition-transform duration-300 group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <div className="mt-6 text-lg leading-relaxed opacity-70">{f.a}</div>
+            </details>
+          ))}
         </div>
       </section>
 
-      {/* SECTION 6: SIGN-UP CTA */}
-      <section className="cta-section">
-        <div className="container">
-          <h2>Ready to Make Your Trip Count?</h2>
-          <p>Get instant access to the full directory.</p>
-          <br />
-          <a
-            id="cta-button"
-            href="https://forms.gle/y2eaPc9ptY1UDL37A"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn"
-          >
-            Get involved
-          </a>
+      {/* CTA */}
+      <section className="px-6 py-32">
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[5rem] bg-primary px-8 py-24 text-center text-primary-foreground shadow-2xl md:px-12">
+          <div className="relative z-10">
+            <h2 className="font-display mb-10 text-6xl leading-none italic md:text-9xl">
+              E M&#257;lama I Ka &#699;&#256;ina
+            </h2>
+            <p className="mx-auto mb-14 max-w-xl text-2xl italic opacity-80">
+              To care for the land that feeds us. Make your trip count for the places that need it.
+            </p>
+            <a
+              href={FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-full bg-accent px-16 py-6 text-xl font-bold text-accent-foreground shadow-xl transition-all hover:bg-background hover:text-accent"
+            >
+              Join the Movement
+            </a>
+          </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
