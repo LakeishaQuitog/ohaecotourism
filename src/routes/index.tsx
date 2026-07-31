@@ -200,23 +200,38 @@ function Index() {
       {/* PROBLEM */}
       <section className="bg-secondary px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <div className="grid gap-12 md:grid-cols-2 md:pb-12">
-            <div className="flex flex-col justify-center rounded-[3rem] rounded-br-none bg-background p-12 shadow-sm">
-              <h2 className="font-display mb-6 text-4xl leading-tight italic">
-                &ldquo;I wanted to help, but fragmented information and corporate greenwashing made it
-                impossible to know who was actually doing the work.&rdquo;
-              </h2>
-              <p className="text-xs font-bold tracking-widest text-accent uppercase">
-                &mdash; Mindful travelers
+          <div className="mb-16 text-center">
+            <span className="mb-4 inline-block rounded-full bg-background px-4 py-1.5 text-xs font-semibold tracking-widest uppercase">
+              The Problem
+            </span>
+            <h2 className="font-display mb-6 text-5xl italic md:text-6xl">
+              Tourism dollars rarely reach the people protecting the land.
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg leading-relaxed opacity-80">
+              Travelers want to give back, but the path from good intention to real impact is cluttered with
+              greenwashing, fragmented listings, and small initiatives that lack the digital tools to be found.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            <div className="rounded-[3rem] rounded-br-none bg-background p-10 shadow-sm">
+              <h3 className="font-display mb-4 text-2xl italic">Greenwashing Wins</h3>
+              <p className="leading-relaxed opacity-80">
+                Big brands market &ldquo;sustainable&rdquo; experiences while the actual work is done by
+                under-funded community groups with little visibility.
               </p>
             </div>
-            <div className="flex flex-col justify-center rounded-[3rem] rounded-tl-none bg-primary p-12 text-primary-foreground shadow-xl md:translate-y-12">
-              <h2 className="font-display mb-6 text-4xl leading-tight italic">
-                &ldquo;We&rsquo;re doing real work on the land, but we struggle with digital visibility and
-                finding people to help drive the mission.&rdquo;
-              </h2>
-              <p className="text-xs font-bold tracking-widest uppercase opacity-60">
-                &mdash; Local initiatives
+            <div className="rounded-[3rem] rounded-bl-none bg-primary p-10 text-primary-foreground shadow-xl">
+              <h3 className="font-display mb-4 text-2xl italic">Information is Fragmented</h3>
+              <p className="leading-relaxed opacity-90">
+                Travelers piece together blogs, review sites, and social posts, never knowing which opportunities
+                are legitimate, current, or locally run.
+              </p>
+            </div>
+            <div className="rounded-[3rem] rounded-tl-none bg-background p-10 shadow-sm">
+              <h3 className="font-display mb-4 text-2xl italic">Local Groups Lose Out</h3>
+              <p className="leading-relaxed opacity-80">
+                Native-led nonprofits and small farms do the restoration work but struggle with marketing,
+                scheduling volunteers, and connecting with the right visitors.
               </p>
             </div>
           </div>
