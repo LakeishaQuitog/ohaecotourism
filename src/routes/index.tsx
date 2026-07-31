@@ -161,7 +161,7 @@ function Index() {
             </h1>
             <p className="mb-12 max-w-md text-xl leading-relaxed opacity-90">
               &lsquo;Oha Ecotourism connects conscious travelers with verified sustainability initiatives across
-              the Hawaiian Islands. Explore deeper, give back, and leave a lighter footprint.
+              the Hawaiian Islands. Explore deeper, l, and leave a lighter footprint.
             </p>
             <div className="flex flex-wrap gap-6">
               <a
