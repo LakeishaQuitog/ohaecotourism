@@ -197,6 +197,17 @@ function Index() {
         </div>
       </section>
 
+      {/* TRAVELER QUOTE */}
+      <section className="px-6 py-24">
+        <div className="mx-auto max-w-4xl text-center">
+          <blockquote className="font-display mb-8 text-3xl italic leading-snug md:text-5xl">
+            &ldquo;The very last thing I ever wanted to do was treat Hawaii like a zoo. I know I&rsquo;m a tourist.
+            I was never trying to not be one, I just didn&rsquo;t want to be ignorant that&rsquo;s all.&rdquo;
+          </blockquote>
+          <p className="text-xs font-bold tracking-widest text-accent uppercase">&mdash; Real traveler in the market</p>
+        </div>
+      </section>
+
       {/* PROBLEM */}
       <section className="bg-secondary px-6 py-24">
         <div className="mx-auto max-w-5xl">
