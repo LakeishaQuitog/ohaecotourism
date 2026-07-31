@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import heroValley from "@/assets/hero-valley.jpg";
+import heroBay from "@/assets/hero-bay.jpeg.asset.json";
 import ohaLogo from "@/assets/oha-logo.png.asset.json";
 import kokuaFarmAsset from "@/assets/kokua-learning-farm.jpeg.asset.json";
 import kakooOiwiAsset from "@/assets/kakoo-oiwi-taro.jpeg.asset.json";
@@ -186,7 +186,7 @@ function Index() {
           <div className="relative lg:col-span-5">
             <div className="aspect-[4/5] rotate-2 overflow-hidden rounded-[4rem] rounded-tl-none bg-secondary shadow-2xl">
               <img
-                src={heroValley}
+                src={heroBay.url}
                 alt="Misty green Hawaiian valley with tropical foliage at sunrise"
                 width={800}
                 height={1008}
