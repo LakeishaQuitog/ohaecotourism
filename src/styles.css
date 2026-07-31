@@ -142,3 +142,376 @@
     color: var(--color-foreground);
   }
 }
+
+/* ===== 'Oha landing page design system ===== */
+:root {
+  --seaweed-green: oklch(0.4143 0.0925 145.5);
+  --seaweed-green-dark: oklch(0.3435 0.0821 145.5);
+  --sand: oklch(0.9294 0.0603 95.5);
+  --deep-ocean: oklch(0.3336 0.0596 236.6);
+  --text-dark: oklch(0.2795 0.0368 260.03);
+  --oha-white: oklch(1 0 0);
+  --light-gray: oklch(0.9816 0.0035 247.86);
+  --oha-border: oklch(0.9276 0.0058 264.53);
+  --oha-muted: oklch(0.551 0.0234 264.36);
+}
+
+.oha-page {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--sand);
+}
+
+.oha-page * { box-sizing: border-box; margin: 0; padding: 0; }
+
+.oha-page .container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.oha-page section {
+  padding: 4rem 0;
+  border-bottom: 1px solid oklch(0.3336 0.0596 236.6 / 0.1);
+}
+
+.oha-page h1,
+.oha-page h2,
+.oha-page h3 {
+  line-height: 1.25;
+  color: var(--deep-ocean);
+  margin-bottom: 1rem;
+}
+
+.oha-page h1 { font-size: 2.25rem; font-weight: 800; }
+.oha-page h2 { font-size: 1.75rem; font-weight: 700; }
+.oha-page h3 { font-size: 1.25rem; font-weight: 700; }
+
+@media (min-width: 768px) {
+  .oha-page h1 { font-size: 3rem; }
+  .oha-page h2 { font-size: 2.25rem; }
+}
+
+.oha-page p { margin-bottom: 1.25rem; font-size: 1.125rem; }
+
+.oha-page .subhead {
+  font-size: 1.125rem;
+  color: var(--seaweed-green);
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.oha-page .btn {
+  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem 1.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  color: var(--oha-white);
+  background-color: var(--seaweed-green);
+  border: 2px solid var(--seaweed-green);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 4px 6px oklch(0 0 0 / 0.1);
+}
+
+.oha-page .btn:hover,
+.oha-page .btn:focus { background-color: var(--seaweed-green-dark); }
+
+.oha-page .hero {
+  background-color: var(--sand);
+  text-align: center;
+  padding: 5rem 0 3rem;
+}
+
+.oha-page .brand-title {
+  color: var(--seaweed-green);
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  .oha-page .brand-title { font-size: 5rem; }
+}
+
+.oha-page .problem-section { background-color: var(--oha-white); }
+
+.oha-page .problem-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .oha-page .problem-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.oha-page .quote-box {
+  background-color: var(--sand);
+  border-left: 6px solid var(--deep-ocean);
+  padding: 1.5rem;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.oha-page .quote-box p {
+  font-size: 1.125rem;
+  color: var(--text-dark);
+  margin-bottom: 0;
+}
+
+.oha-page .quote-box.green { border-left-color: var(--seaweed-green); }
+
+.oha-page .solution-section { background-color: var(--light-gray); }
+
+.oha-page .steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+@media (min-width: 600px) {
+  .oha-page .steps-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.oha-page .step-card {
+  background: var(--oha-white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--oha-border);
+}
+
+.oha-page .step-number {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: var(--seaweed-green);
+  color: var(--oha-white);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.oha-page .price-box {
+  background: var(--deep-ocean);
+  color: var(--oha-white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.oha-page .price-box h3 { color: var(--sand); }
+
+.oha-page .price-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--oha-white);
+}
+
+.oha-page .app-preview {
+  background: var(--oha-white);
+  border: 2px solid var(--deep-ocean);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.oha-page .cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 600px) {
+  .oha-page .cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.oha-page .tour-card {
+  background: var(--oha-white);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--oha-border);
+  box-shadow: 0 4px 12px oklch(0 0 0 / 0.06);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.oha-page .tour-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px oklch(0 0 0 / 0.1);
+}
+
+.oha-page .card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, var(--deep-ocean), var(--seaweed-green));
+  overflow: hidden;
+}
+
+.oha-page .card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.oha-page .tour-card:hover .card-img { transform: scale(1.03); }
+
+.oha-page .card-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: oklch(0.3336 0.0596 236.6 / 0.92);
+  color: var(--sand);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px oklch(0 0 0 / 0.2);
+}
+
+.oha-page .card-checkbox-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 42px;
+  height: 42px;
+  background: var(--oha-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px oklch(0 0 0 / 0.25);
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  z-index: 2;
+}
+
+.oha-page .card-checkbox-btn:hover { transform: scale(1.08); }
+
+.oha-page .card-checkbox-btn input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--deep-ocean);
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.oha-page .card-checkbox-btn input[type="checkbox"]:checked {
+  background-color: var(--seaweed-green);
+  border-color: var(--seaweed-green);
+}
+
+.oha-page .card-checkbox-btn input[type="checkbox"]:checked::after {
+  content: '✓';
+  color: var(--oha-white);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.oha-page .tour-card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.oha-page .tour-card-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.oha-page .tour-card-location {
+  font-size: 0.95rem;
+  color: var(--oha-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+}
+
+.oha-page .saved-summary {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--oha-border);
+  font-size: 1.1rem;
+}
+
+.oha-page .saved-count { color: var(--seaweed-green); font-weight: 800; }
+
+.oha-page .proof-section { background-color: var(--oha-white); }
+
+.oha-page .stat-badge {
+  display: inline-block;
+  background: var(--sand);
+  color: var(--deep-ocean);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.oha-page .faq-section { background-color: var(--light-gray); }
+
+.oha-page .faq-item {
+  background: var(--oha-white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--oha-border);
+}
+
+.oha-page .cta-section {
+  background-color: var(--deep-ocean);
+  color: var(--oha-white);
+  text-align: center;
+  padding: 5rem 0;
+}
+
+.oha-page .cta-section h2 { color: var(--sand); }
+
+.oha-page .graphic-container {
+  width: 100%;
+  height: 180px;
+  background: oklch(0.9276 0.0125 251.5);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
