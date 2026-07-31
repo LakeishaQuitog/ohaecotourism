@@ -212,14 +212,6 @@ function Index() {
               greenwashing, fragmented listings, and small initiatives that lack the digital tools to be found.
             </p>
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="rounded-[3rem] rounded-br-none bg-background p-10 shadow-sm">
-              <h3 className="font-display mb-4 text-2xl italic">Greenwashing Wins</h3>
-              <p className="leading-relaxed opacity-80">
-                Big brands market &ldquo;sustainable&rdquo; experiences while the actual work is done by
-                under-funded community groups with little visibility.
-              </p>
-            </div>
             <div className="rounded-[3rem] rounded-bl-none bg-primary p-10 text-primary-foreground shadow-xl">
               <h3 className="font-display mb-4 text-2xl italic">Information is Fragmented</h3>
               <p className="leading-relaxed opacity-90">
