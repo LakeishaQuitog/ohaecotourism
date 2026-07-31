@@ -212,6 +212,7 @@ function Index() {
               greenwashing, fragmented listings, and small initiatives that lack the digital tools to be found.
             </p>
           </div>
+          <div className="grid gap-8 md:grid-cols-2">
             <div className="rounded-[3rem] rounded-bl-none bg-primary p-10 text-primary-foreground shadow-xl">
               <h3 className="font-display mb-4 text-2xl italic">Information is Fragmented</h3>
               <p className="leading-relaxed opacity-90">
