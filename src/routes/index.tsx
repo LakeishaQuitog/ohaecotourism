@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import heroKoolau from "@/assets/hero-koolau.jpg.asset.json";
-import ohaLogo from "@/assets/oha-logo.png.asset.json";
+import ohaLogo from "@/assets/oha-logo-new.png.asset.json";
 import kokuaFarmAsset from "@/assets/kokua-learning-farm.jpeg.asset.json";
 import kakooOiwiAsset from "@/assets/kakoo-oiwi-taro.jpeg.asset.json";
 import waiheeDunesAsset from "@/assets/waihee-dunes.jpg.asset.json";
