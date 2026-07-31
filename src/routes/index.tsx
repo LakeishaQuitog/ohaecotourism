@@ -3,6 +3,7 @@ import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import heroValley from "@/assets/hero-valley.jpg";
+import ohaLogo from "@/assets/oha-logo.png.asset.json";
 import kokuaFarm from "@/assets/kokua-learning-farm.jpg";
 import kakooOiwi from "@/assets/kakoo-oiwi-taro.jpg";
 import waiheeDunes from "@/assets/waihee-dunes.jpg";
@@ -117,8 +118,38 @@ function Index() {
 
   return (
     <main className="w-full overflow-x-hidden">
+      {/* HEADER */}
+      <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
+        <a href="#top" className="flex items-center gap-3">
+          <img
+            src={ohaLogo.url}
+            alt="&lsquo;Oha Ecotourism logo: taro leaves in a circle"
+            width={48}
+            height={48}
+            className="h-11 w-11 object-contain"
+          />
+          <span className="font-display text-2xl italic leading-none">&lsquo;Oha Ecotourism</span>
+        </a>
+        <nav className="hidden items-center gap-8 text-sm font-medium sm:flex">
+          <a href="#standard" className="transition-opacity hover:opacity-60">
+            Our Standard
+          </a>
+          <a href="#directory" className="transition-opacity hover:opacity-60">
+            Directory
+          </a>
+          <a
+            href={FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-primary px-5 py-2.5 text-primary-foreground transition-colors hover:bg-primary-deep"
+          >
+            Get Involved
+          </a>
+        </nav>
+      </header>
+
       {/* HERO */}
-      <section className="relative mx-auto max-w-7xl px-6 py-20 lg:py-32">
+      <section id="top" className="relative mx-auto max-w-7xl px-6 py-16 lg:py-24">
         <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
           <div className="z-10 lg:col-span-7">
             <span className="mb-8 inline-block rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold tracking-widest uppercase">
@@ -335,6 +366,27 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-border px-6 py-16">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 text-center">
+          <img
+            src={ohaLogo.url}
+            alt="&lsquo;Oha Ecotourism logo"
+            width={64}
+            height={64}
+            loading="lazy"
+            className="h-16 w-16 object-contain"
+          />
+          <p className="font-display text-3xl italic">&lsquo;Oha Ecotourism</p>
+          <p className="max-w-md text-sm leading-relaxed opacity-70">
+            A free directory of verified, community-led sustainability initiatives across Hawai&lsquo;i.
+          </p>
+          <p className="text-xs tracking-widest uppercase opacity-50">
+            &copy; {new Date().getFullYear()} &lsquo;Oha Ecotourism
+          </p>
+        </div>
+      </footer>
     </main>
   );
 }
