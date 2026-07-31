@@ -193,12 +193,6 @@ function Index() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-8 -left-6 flex aspect-square w-40 -rotate-12 flex-col items-center justify-center rounded-full bg-accent p-6 text-center text-accent-foreground shadow-xl lg:-left-12 lg:w-48">
-              <span className="font-display text-4xl">100%</span>
-              <span className="text-[10px] leading-tight font-bold tracking-widest uppercase">
-                Verified Projects
-              </span>
-            </div>
           </div>
         </div>
       </section>
