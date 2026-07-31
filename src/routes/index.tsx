@@ -105,6 +105,7 @@ const faqs = [
 function Index() {
   const [saved, setSaved] = useState<string[]>([]);
   const [hydrated, setHydrated] = useState(false);
+  const [formTab, setFormTab] = useState<"traveler" | "initiative">("traveler");
 
   useEffect(() => {
     try {
