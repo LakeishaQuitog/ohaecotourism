@@ -84,7 +84,7 @@ const steps = [
   {
     n: "3",
     title: "They Thrive",
-    body: "Tick the initiatives you want to support. Your Impact Plan saves straight to your browser \u2014 no login, no app download.",
+    body: "Tick the initiatives you want to support. Your Impact Plan saves straight to your browser.",
   },
 ];
 
