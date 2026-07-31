@@ -412,7 +412,8 @@ function Index() {
               E M&#257;lama I Ka &#699;&#256;ina
             </h2>
             <p className="mx-auto mb-12 max-w-xl text-2xl italic opacity-80">
-              To care for the land that feeds us. Make your trip count for the places that need it. Get early access now.
+              To care for the land that feeds us. Make your trip count for the places that need it. Be
+              one of the first.
             </p>
             <div className="mx-auto mb-8 flex w-full max-w-md gap-2 rounded-full bg-background/15 p-1.5">
               {(
