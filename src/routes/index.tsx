@@ -322,6 +322,45 @@ function Index() {
         </div>
       </section>
 
+      {/* B2B PARTNERS */}
+      <section className="bg-secondary px-6 py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-16 text-center">
+            <span className="mb-4 inline-block rounded-full bg-background px-4 py-1.5 text-xs font-semibold tracking-widest uppercase">
+              For Hotels, Resorts & Airlines
+            </span>
+            <h2 className="font-display mb-6 text-5xl italic md:text-6xl">A B2B Partner for Impact.</h2>
+            <p className="mx-auto max-w-2xl text-lg leading-relaxed opacity-80">
+              &lsquo;Oha Ecotourism works behind the scenes with hospitality and travel brands to deliver
+              authentic, community-led experiences that meet modern CSR and ESG goals.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            <div className="rounded-[3rem] rounded-br-none bg-background p-10 shadow-sm">
+              <h3 className="font-display mb-4 text-2xl italic">Turnkey CSR &amp; ESG Compliance</h3>
+              <p className="leading-relaxed opacity-80">
+                Hotels need quantifiable community impact metrics for corporate ESG reporting and state
+                environmental alignment. We handle the proof points so you don&rsquo;t have to.
+              </p>
+            </div>
+            <div className="rounded-[3rem] rounded-bl-none bg-primary p-10 text-primary-foreground shadow-xl">
+              <h3 className="font-display mb-4 text-2xl italic">Elevated Guest Loyalty</h3>
+              <p className="leading-relaxed opacity-90">
+                Modern travelers seek authentic, non-touristy experiences that align with the Hawai&lsquo;i
+                Tourism Authority&rsquo;s M&#257;lama Hawai&lsquo;i framework. We connect them to the real thing.
+              </p>
+            </div>
+            <div className="rounded-[3rem] rounded-tl-none bg-background p-10 shadow-sm">
+              <h3 className="font-display mb-4 text-2xl italic">Operational Simplicity</h3>
+              <p className="leading-relaxed opacity-80">
+                Avoid the liability, vetting overhead, and scheduling headaches of coordinating directly with
+                dozens of small non-profits. One partner. One pipeline. Real impact.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="mx-auto max-w-4xl px-6 py-24">
         <div className="mb-16 text-center">
