@@ -410,7 +410,7 @@ function Index() {
               E M&#257;lama I Ka &#699;&#256;ina
             </h2>
             <p className="mx-auto mb-14 max-w-xl text-2xl italic opacity-80">
-              To care for the land that feeds us. Make your trip count for the places that need it.
+              To care for the land that feeds us. Make your trip count for the places that need it. Get early access now.
             </p>
             <a
               href={FORM_URL}
