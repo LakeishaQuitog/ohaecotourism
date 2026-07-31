@@ -8,7 +8,7 @@ import kakooOiwi from "@/assets/kakoo-oiwi-taro.jpg";
 import waiheeDunes from "@/assets/waihee-dunes.jpg";
 import kahiliBeach from "@/assets/kahili-beach.jpg";
 
-const TITLE = "\u2018Oha \u2014 Travel Hawai\u02BBi with Intention";
+const TITLE = "\u2018Oha Ecotourism \u2014 Travel Hawai\u02BBi with Intention";
 const DESCRIPTION =
   "A free directory of verified, community-led sustainability initiatives across Hawai\u02BBi. Save your own impact plan \u2014 no login, no fees.";
 
@@ -129,8 +129,8 @@ function Index() {
               <span className="text-accent">Intention.</span>
             </h1>
             <p className="mb-12 max-w-md text-xl leading-relaxed opacity-90">
-              &lsquo;Oha connects conscious travelers with verified sustainability initiatives across the
-              Hawaiian Islands. Explore deeper, give back, and leave a lighter footprint.
+              &lsquo;Oha Ecotourism connects conscious travelers with verified sustainability initiatives across
+              the Hawaiian Islands. Explore deeper, give back, and leave a lighter footprint.
             </p>
             <div className="flex flex-wrap gap-6">
               <a
@@ -196,7 +196,7 @@ function Index() {
       {/* HOW IT WORKS */}
       <section id="standard" className="mx-auto max-w-6xl scroll-mt-12 px-6 py-32">
         <div className="mb-24 text-center">
-          <h2 className="font-display text-6xl italic">The &lsquo;Oha Standard</h2>
+          <h2 className="font-display text-6xl italic">The &lsquo;Oha Ecotourism Standard</h2>
         </div>
         <div className="grid gap-16 md:grid-cols-3">
           {steps.map((s) => (
